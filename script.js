@@ -1,24 +1,28 @@
-document.getElementById('analyzeButton').addEventListener('click', analyzeSentiment);
+// Initialize Sentiment.js
+const sentiment = new Sentiment();
 
-async function analyzeSentiment() {
-    const text = document.getElementById('inputText').value;
-    const response = await fetch("https://api-inference.huggingface.co/models/cardiffnlp/twitter-roberta-base-sentiment", {
-        method: "POST",
-        headers: {
-            Authorization: "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",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ inputs: text })
-    });
+// Event listener for the button
+document.getElementById('analyzeBtn').addEventListener('click', () => {
+  // Get user input
+  const userInput = document.getElementById('userInput').value;
 
-    try {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
-        document.getElementById('result').textContent = `Sentiment: ${result[0].label}`;
-    } catch (error) {
-        console.error('Error analyzing sentiment:', error);
-        document.getElementById('result').textContent = 'Error analyzing sentiment.';
-    }
-}
+  // Check if input is empty
+  if (!userInput) {
+    document.getElementById('result').innerText = "Please enter some text.";
+    return;
+  }
+
+  // Analyze sentiment
+  const analysis = sentiment.analyze(userInput);
+
+  // Determine sentiment type
+  let sentimentText = "Neutral 😐";
+  if (analysis.score > 0) sentimentText = "Positive 😊";
+  else if (analysis.score < 0) sentimentText = "Negative 😞";
+
+  // Display result
+  document.getElementById('result').innerHTML = `
+    Sentiment: <strong>${sentimentText}</strong><br>
+    Score: ${analysis.score}
+  `;
+});
