@@ -1,32 +1,28 @@
-# Random Fact Generator
+# Sentiment Analysis App
 
-This is a simple single-page application that generates a random fact when a button is clicked. It is built using HTML, CSS, and JavaScript.
+This is a simple sentiment analysis application that predicts the sentiment of a given text input. It uses a Naive Bayes classifier and is built with Python and scikit-learn.
 
 ## Features
 
-- Displays a random fact from a predefined list.
-- Simple and clean user interface.
-- Responsive design.
+- Predicts sentiment as positive or negative based on input text.
+- Utilizes a pre-defined dataset for training.
+- Simple command-line interface for interaction.
 
-## How to Use
+## Dataset
 
-1. Click the "Get Random Fact" button to display a random fact.
-2. The fact will appear in the designated area on the page.
+The app uses a small sample dataset for demonstration purposes. The dataset consists of text samples labeled with their corresponding sentiment (positive or negative).
 
-## Hosting
+## Requirements
 
-This application is hosted on GitHub Pages. You can view it live at: [https://yourusername.github.io/random-fact-generator](https://yourusername.github.io/random-fact-generator)
+- Python 3.x
+- numpy
+- pandas
+- scikit-learn
 
-## Files
-
-- `index.html`: Provides the basic HTML structure.
-- `style.css`: Adds styling for a personalized look and feel.
-- `script.js`: Contains JavaScript to handle random fact generation and user interactions.
-
-## Setup
-
-To run this application locally:
+## Installation
 
 1. Clone the repository:
+
    ```bash
-   git clone https://github.com/yourusername/random-fact-generator.git
+   git clone https://github.com/yourusername/sentiment-analysis-app.git
+   cd sentiment-analysis-app
